@@ -1,8 +1,14 @@
 import re
 
 file_path = input("Enter file path: ")
-with open(file_path, 'r') as file:
-    content = file.read()
+
+try:
+    with open(file_path, 'r') as file:
+        content = file.read()
+except FileNotFoundError:
+    print("File not found.")
+    exit()
+
 
 Ip_pattern = r'(\d{1,3}\.){3}\d{1,3}'
 Ip_addresses = re.finditer(Ip_pattern, content)
